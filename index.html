@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval';">
+    <link rel="stylesheet" href="index.css">
+
+    <title>Going God Mode</title>
+  </head>
+  <body>
+    <h1>Setup your Local Network</h1>
+    blabla <span id="node-version"></span>,
+    blabla <span id="chrome-version"></span>,
+    erwe <span id="electron-version"></span>.
+    <div>
+        <button id="start-server-btn">Start Server</button>
+    </div>
+    <div>
+        <button id="seed-btn">Seed</button>
+    </div>
+    <div>
+        <button id="stop-server-btn">Stop</button>
+    </div>
+    <script>
+        document.getElementById('start-server-btn').addEventListener('click', () => {
+            window.ipcRenderer.send('start-server');
+        });
+        document.getElementById('stop-server-btn').addEventListener('click', () => {
+            window.ipcRenderer.send('stop-server');
+        });
+        document.getElementById('seed-btn').addEventListener('click', () => {
+            window.ipcRenderer.send('seed');
+        });
+    </script>
+  </body>
+</html>
